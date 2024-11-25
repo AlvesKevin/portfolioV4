@@ -1,0 +1,31 @@
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-beige-50 text-dark-900 font-sans;
+  }
+}
+
+@layer components {
+  .neon-line {
+    @apply w-full h-1 bg-dark-900 relative overflow-hidden;
+  }
+  
+  .neon-line::after {
+    content: '';
+    @apply absolute inset-0 bg-dark-900/70 blur-sm;
+  }
+
+  .heading-huge {
+    @apply font-display text-huge font-bold leading-tight;
+  }
+  
+  .btn-neon {
+    @apply px-6 py-3 border border-dark-900 text-dark-900 hover:bg-dark-900 hover:text-beige-50 transition-colors rounded-none;
+  }
+}

@@ -62,14 +62,14 @@ onMounted(() => {
       <div class="absolute left-1/4 bottom-1/4 w-64 h-64 bg-beige-200/20 blur-[96px] rounded-full"></div>
     </div>
     
-    <div class="container mx-auto max-w-7xl relative z-10">
-      <div class="grid md:grid-cols-2 gap-24 items-center">
-        <div>
-          <h1 class="hero-title heading-huge mb-8">
+    <div class="container mx-auto max-w-7xl relative z-10 px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-24 items-center">
+        <div class="text-center md:text-left">
+          <h1 class="hero-title heading-huge mb-6 md:mb-8">
             Expert <span class="text-neon">Web Scraping</span> & Automatisation de Données 🚀
           </h1>
           
-          <div class="hero-subtitle space-y-6 text-xl text-dark-700 mb-12">
+          <div class="hero-subtitle space-y-4 md:space-y-6 text-lg md:text-xl text-dark-700 mb-8 md:mb-12">
             <p class="font-semibold text-dark-900">
               Salut, moi c'est Kévin ! Je transforme vos besoins en données exploitables.
             </p>
@@ -78,7 +78,7 @@ onMounted(() => {
             </p>
           </div>
           
-          <div class="hero-cta flex gap-6">
+          <div class="hero-cta flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center md:justify-start">
             <a href="#contact" class="btn-neon">
               Démarrer un projet
             </a>
@@ -91,7 +91,7 @@ onMounted(() => {
           </div>
         </div>
 
-        <div class="hero-image relative">
+        <div class="hero-image relative mt-8 md:mt-0">
           <div 
             ref="circleRef"
             class="absolute top-1/2 left-[40%] -translate-x-1/2 -translate-y-1/2 w-[80%] aspect-square bg-dark-900 rounded-full transition-transform"

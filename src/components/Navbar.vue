@@ -24,11 +24,11 @@ onMounted(() => {
         </a>
         
         <div class="hidden md:flex items-center gap-8">
-          <a v-for="(item, index) in ['Services', 'Projets', 'Témoignages', 'Contact']" 
+          <a v-for="(item, index) in ['Services', 'Projets', 'Temoignages', 'Contact']" 
              :key="index"
              :href="'#' + item.toLowerCase()"
              class="nav-item text-dark-700 hover:text-neon transition-colors">
-            {{ item }}
+            {{ item === 'Temoignages' ? 'Témoignages' : item }}
           </a>
           <a href="#contact" class="nav-item btn-neon">
             Démarrer un projet
@@ -47,12 +47,12 @@ onMounted(() => {
     <div v-if="isMenuOpen" class="md:hidden absolute top-full left-0 w-full bg-beige-100 py-4 border-b border-beige-200">
       <div class="container mx-auto px-6">
         <div class="flex flex-col gap-4">
-          <a v-for="(item, index) in ['Services', 'Projets', 'Témoignages', 'Contact']" 
+          <a v-for="(item, index) in ['Services', 'Projets', 'Temoignages', 'Contact']" 
              :key="index"
              :href="'#' + item.toLowerCase()"
              class="text-dark-700 hover:text-neon transition-colors"
              @click="isMenuOpen = false">
-            {{ item }}
+            {{ item === 'Temoignages' ? 'Témoignages' : item }}
           </a>
           <a href="#contact" class="btn-neon text-center" @click="isMenuOpen = false">
             Démarrer un projet

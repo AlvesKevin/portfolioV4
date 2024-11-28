@@ -6,23 +6,25 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "vite preview --host 0.0.0.0 --port 80"
   },
   "dependencies": {
-    "vue": "^3.5.10",
-    "vue-router": "^4.3.0",
-    "gsap": "^3.12.5",
     "@emailjs/browser": "^4.3.3",
-    "@headlessui/vue": "^1.7.19"
+    "@headlessui/vue": "^1.7.19",
+    "gsap": "^3.12.5",
+    "vue": "^3.5.10",
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
+    "@types/node": "^20.11.24",
     "@vitejs/plugin-vue": "^5.1.4",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "terser": "^5.36.0",
     "typescript": "^5.5.3",
     "vite": "^5.4.8",
-    "vue-tsc": "^2.1.6",
-    "tailwindcss": "^3.4.1",
-    "postcss": "^8.4.35",
-    "autoprefixer": "^10.4.17",
-    "@types/node": "^20.11.24"
+    "vue-tsc": "^2.1.6"
   }
 }

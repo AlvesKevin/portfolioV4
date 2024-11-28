@@ -10,13 +10,13 @@ const services = [
     icon: '🔍',
     title: 'Web Scraping & Extraction',
     description: 'Extraction de données à grande échelle avec des solutions personnalisées et performantes.',
-    features: ['Scraping multi-sources', 'Respect des robots.txt', 'Proxy rotation', 'Data cleaning']
+    features: ['Scraping multi-sources', 'Enrichissement de DB', 'Data cleaning', 'Développement API']
   },
   {
     icon: '🎯',
-    title: 'Génération de Leads',
+    title: 'Génération de Leads via Web Scraping',
     description: 'Identification et extraction de contacts qualifiés pour votre business.',
-    features: ['Données vérifiées', 'Enrichissement', 'Export personnalisé', 'Mise à jour régulière']
+    features: ['Données vérifiées', 'Enrichissement', 'Multi-sources']
   },
   {
     icon: '⚡',

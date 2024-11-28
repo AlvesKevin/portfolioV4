@@ -11,14 +11,14 @@ const testimonials = [
     company: 'Application Immobilière',
     content: 'Kévin a grandement contribué au développement de notre API de scraping immobilier et à son automatisation, le tout avec beaucoup de professionnalisme et de sérieux. Son expertise a été clé dans la mise en place de notre système de collecte de données.',
     project: 'API de scraping immobilier & automatisation',
-    image: '/testimonials/dwell.jpg'
+    image: '/testimonials/logo_dwell.png'
   },
   {
     name: 'Pierre',
     company: 'Gustave Games - Studio de Jeux Vidéo',
     content: 'Kevin a répondu aux attentes avec un livrable de qualité; mission courte réalisée de manière efficace avec une bonne communication et une attention à la satisfaction du client.',
     project: 'Extraction et analyse de données',
-    image: '/testimonials/gustave.jpg'
+    image: '/testimonials/gustave_logo.png'
   }
 ]
 

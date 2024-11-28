@@ -11,28 +11,28 @@ const projects = [
     description: 'Extraction et qualification de 14 000 contacts d\'artisans en rénovation énergétique',
     image: '/projects/artisans.png',
     tags: ['Python', 'MongoDB', 'Data Mining'],
-    metrics: ['14k+ contacts', '95% validés', '3 sources']
+    metrics: ['14k+ contacts extraits']
   },
   {
     title: 'API Immobilière',
     description: 'Développement d\'une API de scraping pour les annonces immobilières (projet Dwell)',
     image: '/projects/dwell.png',
-    tags: ['FastAPI', 'Docker', 'Redis'],
-    metrics: ['100k+ annonces', 'Temps réel', 'Multi-sources']
+    tags: ['FastAPI', 'Docker'],
+    metrics: ['150k+ annonces', 'Temps réel', 'Multi-sources']
   },
   {
     title: 'Amazon Product API',
     description: 'API d\'extraction de produits Amazon avec rotation de proxies et anti-détection',
     image: '/projects/amazon.png',
-    tags: ['Python', 'Scrapy', 'AWS'],
-    metrics: ['99.9% uptime', '1M+ requêtes/jour']
+    tags: ['Python', 'FastAPI'],
+    metrics: ['5000+ produits extraits']
   },
   {
     title: 'Scraping Hôtelier International',
     description: 'Script de scraping pour l\'extraction de tarifs hôteliers à l\'échelle mondiale, couvrant plusieurs pays dont la Chine, la France et l\'Italie',
     image: '/projects/hotel.png',
-    tags: ['Python', 'Selenium', 'Proxy Management'],
-    metrics: ['56k+ tarifs', '10+ pays', 'Multi-devises']
+    tags: ['Python', 'Selenium', 'ChromeDriver'],
+    metrics: ['56k+ tarifs', '10+ pays', 'Multi-devises', 'Multi-filtres']
   }
 ]
 

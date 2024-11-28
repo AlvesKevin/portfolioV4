@@ -4,6 +4,7 @@ import Navbar from './components/Navbar.vue'
 import Hero from './components/Hero.vue'
 import Services from './components/Services.vue'
 import Projects from './components/Projects.vue'
+import TrustedBy from './components/TrustedBy.vue'
 import Testimonials from './components/Testimonials.vue'
 import Contact from './components/Contact.vue'
 import Footer from './components/Footer.vue'
@@ -15,6 +16,7 @@ import Footer from './components/Footer.vue'
     <main>
       <Hero />
       <Services />
+      <TrustedBy />
       <Projects />
       <Testimonials />
       <Contact />

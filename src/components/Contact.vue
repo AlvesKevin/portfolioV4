@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import emailjs from '@emailjs/browser'
 
 const form = ref({
   name: '',
@@ -14,27 +13,13 @@ const isLoading = ref(false)
 const sendEmail = async (e: Event) => {
   e.preventDefault()
   isLoading.value = true
-  status.value = ''
-
-  try {
-    await emailjs.send(
-      'YOUR_SERVICE_ID',
-      'YOUR_TEMPLATE_ID',
-      {
-        from_name: form.value.name,
-        from_email: form.value.email,
-        message: form.value.message
-      },
-      'YOUR_PUBLIC_KEY'
-    )
-    
-    status.value = 'success'
+  
+  setTimeout(() => {
+    console.log('Formulaire soumis :', form.value)
     form.value = { name: '', email: '', message: '' }
-  } catch (error) {
-    status.value = 'error'
-  } finally {
+    status.value = 'success'
     isLoading.value = false
-  }
+  }, 1000)
 }
 </script>
 

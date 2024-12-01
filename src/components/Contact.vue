@@ -26,18 +26,14 @@ const sendEmail = async (e: Event) => {
         email: form.value.email,
         message: form.value.message,
         created_at: new Date().toISOString()
-      })
+      }),
+      mode: 'no-cors'
     })
 
-    const data = await response.json()
-    console.log('Réponse:', data)
-
-    if (!response.ok) {
-      throw new Error(data.msg || 'Erreur lors de l\'envoi')
+    if (response.type === 'opaque') {
+      form.value = { name: '', email: '', message: '' }
+      status.value = 'success'
     }
-
-    form.value = { name: '', email: '', message: '' }
-    status.value = 'success'
   } catch (error) {
     console.error('Erreur:', error)
     status.value = 'error'
@@ -113,10 +109,6 @@ const sendEmail = async (e: Event) => {
           </p>
           <p v-if="status === 'error'" class="text-red-600 text-sm">
             Une erreur est survenue. Veuillez réessayer ou me contacter directement à contact@kevinalves.fr
-          </p>
-          
-          <p class="text-dark-700 text-sm mt-4">
-            En cliquant sur Envoyer, votre client mail s'ouvrira automatiquement avec votre message.
           </p>
         </form>
       </div>

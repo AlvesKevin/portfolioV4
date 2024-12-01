@@ -15,22 +15,18 @@ const sendEmail = async (e: Event) => {
   isLoading.value = true
   
   try {
-    const response = await fetch('http://nocodb-m0wo4o4kc4s0gko4k8cgogg8.62.72.18.21.sslip.io/api/v1/db/data/v1/p8se3q0zbk4ojc4/contact', {
+    const response = await fetch('https://nocodb.kevinalves.fr/api/v1/db/data/v1/p8se3q0zbk4ojc4/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'xc-token': import.meta.env.VITE_NOCODB_TOKEN || '1d-5viNwVUUHnP5JheXNfRzhaVRjVCHFL4gwTemi',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, xc-token'
+        'xc-token': import.meta.env.VITE_NOCODB_TOKEN
       },
       body: JSON.stringify({
         name: form.value.name,
         email: form.value.email,
         message: form.value.message,
         created_at: new Date().toISOString()
-      }),
-      mode: 'cors'
+      })
     })
 
     const data = await response.json()

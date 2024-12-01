@@ -15,7 +15,7 @@ const sendEmail = async (e: Event) => {
   isLoading.value = true
   
   try {
-    const response = await fetch('http://nocodb-m0wo4o4kc4s0gko4k8cgogg8.62.72.18.21.sslip.io/api/v1/db/data/v1/p8se3q0zbk4ojc4/contact', {
+    const response = await fetch('/nocodb/api/v1/db/data/v1/p8se3q0zbk4ojc4/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

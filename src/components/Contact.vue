@@ -15,7 +15,7 @@ const sendEmail = async (e: Event) => {
   isLoading.value = true
   
   try {
-    const response = await fetch('https://nocodb-m0wo4o4kc4s0gko4k8cgogg8.62.72.18.21.sslip.io/api/v1/db/data/v1/p8se3q0zbk4ojc4/contact', {
+    const response = await fetch('http://nocodb-m0wo4o4kc4s0gko4k8cgogg8.62.72.18.21.sslip.io/api/v1/db/data/v1/p8se3q0zbk4ojc4/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -26,14 +26,18 @@ const sendEmail = async (e: Event) => {
         email: form.value.email,
         message: form.value.message,
         created_at: new Date().toISOString()
-      }),
-      mode: 'no-cors'
+      })
     })
 
-    if (response.type === 'opaque') {
-      form.value = { name: '', email: '', message: '' }
-      status.value = 'success'
+    const data = await response.json()
+    console.log('Réponse:', data)
+
+    if (!response.ok) {
+      throw new Error(data.msg || 'Erreur lors de l\'envoi')
     }
+
+    form.value = { name: '', email: '', message: '' }
+    status.value = 'success'
   } catch (error) {
     console.error('Erreur:', error)
     status.value = 'error'

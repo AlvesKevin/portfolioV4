@@ -3,6 +3,10 @@ FROM node:18-alpine as build
 
 WORKDIR /app
 
+# Définition des variables d'environnement
+ENV VITE_APP_TITLE="Portfolio Kevin"
+ENV VITE_NOCODB_TOKEN="1d-5viNwVUUHnP5JheXNfRzhaVRjVCHFL4gwTemi"
+
 # Copie des fichiers de configuration
 COPY package*.json ./
 COPY tsconfig*.json ./

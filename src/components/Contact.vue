@@ -14,14 +14,12 @@ const sendEmail = async (e: Event) => {
   e.preventDefault()
   isLoading.value = true
   
-  console.log('Token:', import.meta.env.VITE_NOCODB_TOKEN)
-  
   try {
-    const response = await fetch('http://nocodb-m0wo4o4kc4s0gko4k8cgogg8.62.72.18.21.sslip.io/api/v1/db/data/v1/p8se3q0zbk4ojc4/contact', {
+    const response = await fetch('https://nocodb-m0wo4o4kc4s0gko4k8cgogg8.62.72.18.21.sslip.io/api/v1/db/data/v1/p8se3q0zbk4ojc4/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'xc-token': import.meta.env.VITE_NOCODB_TOKEN
+        'xc-token': import.meta.env.VITE_NOCODB_TOKEN || '1d-5viNwVUUHnP5JheXNfRzhaVRjVCHFL4gwTemi'
       },
       body: JSON.stringify({
         name: form.value.name,

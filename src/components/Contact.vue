@@ -7,19 +7,45 @@ const form = ref({
   message: ''
 })
 
-const status = ref('')
 const isLoading = ref(false)
+const status = ref('')
 
 const sendEmail = async (e: Event) => {
   e.preventDefault()
   isLoading.value = true
   
-  setTimeout(() => {
-    console.log('Formulaire soumis :', form.value)
+  console.log('Token:', import.meta.env.VITE_NOCODB_TOKEN)
+  
+  try {
+    const response = await fetch('http://nocodb-m0wo4o4kc4s0gko4k8cgogg8.62.72.18.21.sslip.io/api/v1/db/data/v1/p8se3q0zbk4ojc4/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'xc-token': import.meta.env.VITE_NOCODB_TOKEN
+      },
+      body: JSON.stringify({
+        name: form.value.name,
+        email: form.value.email,
+        message: form.value.message,
+        created_at: new Date().toISOString()
+      })
+    })
+
+    const data = await response.json()
+    console.log('Réponse:', data)
+
+    if (!response.ok) {
+      throw new Error(data.msg || 'Erreur lors de l\'envoi')
+    }
+
     form.value = { name: '', email: '', message: '' }
     status.value = 'success'
+  } catch (error) {
+    console.error('Erreur:', error)
+    status.value = 'error'
+  } finally {
     isLoading.value = false
-  }, 1000)
+  }
 }
 </script>
 
@@ -81,14 +107,18 @@ const sendEmail = async (e: Event) => {
           <button type="submit" 
                   :disabled="isLoading"
                   class="btn-neon w-full">
-            {{ isLoading ? 'Envoi en cours...' : 'Envoyer' }}
+            {{ isLoading ? 'Ouverture du client mail...' : 'Envoyer' }}
           </button>
           
           <p v-if="status === 'success'" class="text-green-600 text-sm">
-            Message envoyé avec succès !
+            Message envoyé avec succès ! Je vous recontacterai rapidement.
           </p>
           <p v-if="status === 'error'" class="text-red-600 text-sm">
-            Une erreur est survenue. Veuillez réessayer.
+            Une erreur est survenue. Veuillez réessayer ou me contacter directement à contact@kevinalves.fr
+          </p>
+          
+          <p class="text-dark-700 text-sm mt-4">
+            En cliquant sur Envoyer, votre client mail s'ouvrira automatiquement avec votre message.
           </p>
         </form>
       </div>

@@ -28,8 +28,7 @@ const sendEmail = async (e: Event) => {
     const headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      'Authorization': `Bearer ${API_TOKEN}`,
-      'xc-auth': API_TOKEN
+      'xc-token': API_TOKEN
     }
     console.log('Headers de la requête:', headers)
     

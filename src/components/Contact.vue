@@ -36,9 +36,9 @@ const sendEmail = async (e: Event) => {
       method: 'POST',
       headers,
       body: JSON.stringify({
-        Name: form.value.name,
-        Email: form.value.email,
-        Message: form.value.message,
+        name: form.value.name,
+        email: form.value.email,
+        message: form.value.message,
         CreatedAt: new Date().toISOString()
       })
     })

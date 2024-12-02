@@ -10,19 +10,31 @@ const form = ref({
 const status = ref('')
 const isLoading = ref(false)
 
+const API_TOKEN = import.meta.env.VITE_NOCODB_API_TOKEN
+
+// Débogage des variables d'environnement
+console.log('Variables d\'environnement:', {
+  token: API_TOKEN,
+  allEnv: import.meta.env
+})
+
 const sendEmail = async (e: Event) => {
   e.preventDefault()
   isLoading.value = true
   status.value = ''
   
   try {
+    // Afficher les headers pour débogage
+    const headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'xc-auth': API_TOKEN
+    }
+    console.log('Headers de la requête:', headers)
+    
     const response = await fetch('https://nocodb.kevinalves.fr/api/v1/db/data/v1/p8se3q0zbk4ojc4/contact', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'xc-auth': import.meta.env.VITE_NOCODB_API_TOKEN,
-        'Accept': 'application/json'
-      },
+      headers,
       body: JSON.stringify({
         Name: form.value.name,
         Email: form.value.email,
@@ -31,15 +43,27 @@ const sendEmail = async (e: Event) => {
       })
     })
 
+    // Afficher la réponse complète pour débogage
+    console.log('Status:', response.status)
+    console.log('Headers de réponse:', Object.fromEntries(response.headers))
+
     if (!response.ok) {
-      const error = await response.json()
-      throw new Error(error.msg || 'Erreur lors de l\'envoi du message')
+      const errorData = await response.json().catch(e => ({ error: 'Impossible de parser la réponse' }))
+      console.error('Réponse d\'erreur complète:', {
+        status: response.status,
+        statusText: response.statusText,
+        data: errorData
+      })
+      throw new Error(errorData.msg || `Erreur ${response.status}: ${response.statusText}`)
     }
+
+    const responseData = await response.json()
+    console.log('Réponse succès:', responseData)
 
     form.value = { name: '', email: '', message: '' }
     status.value = 'success'
   } catch (error) {
-    console.error('Erreur:', error)
+    console.error('Erreur complète:', error)
     status.value = 'error'
   } finally {
     isLoading.value = false

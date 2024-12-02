@@ -3,6 +3,9 @@ FROM node:18-alpine as build
 
 WORKDIR /app
 
+# Installation des dépendances nécessaires pour le build
+RUN apk add --no-cache bash
+
 # Copie des fichiers de configuration
 COPY package*.json ./
 COPY tsconfig*.json ./
@@ -13,6 +16,10 @@ RUN npm ci
 
 # Copie du code source et des fichiers statiques
 COPY . .
+
+# Configuration des variables d'environnement
+ENV VITE_NOCODB_URL=https://nocodb.kevinalves.fr
+ENV VITE_NOCODB_API_TOKEN=1d-5viNwVUUHnP5JheXNfRzhaVRjVCHFL4gwTemi
 
 # Build de l'application
 RUN npm run build

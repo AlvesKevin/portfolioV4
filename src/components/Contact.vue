@@ -28,6 +28,7 @@ const sendEmail = async (e: Event) => {
     const headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
+      'Authorization': `Bearer ${API_TOKEN}`,
       'xc-auth': API_TOKEN
     }
     console.log('Headers de la requête:', headers)
@@ -52,7 +53,8 @@ const sendEmail = async (e: Event) => {
       console.error('Réponse d\'erreur complète:', {
         status: response.status,
         statusText: response.statusText,
-        data: errorData
+        data: errorData,
+        headers: Object.fromEntries(response.headers)
       })
       throw new Error(errorData.msg || `Erreur ${response.status}: ${response.statusText}`)
     }

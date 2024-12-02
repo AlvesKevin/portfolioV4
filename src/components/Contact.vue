@@ -7,33 +7,31 @@ const form = ref({
   message: ''
 })
 
-const isLoading = ref(false)
 const status = ref('')
+const isLoading = ref(false)
 
 const sendEmail = async (e: Event) => {
   e.preventDefault()
   isLoading.value = true
+  status.value = ''
   
   try {
-    const response = await fetch('https://nocodb.kevinalves.fr/api/v1/db/data/v1/p8se3q0zbk4ojc4/contact', {
+    const response = await fetch(`${import.meta.env.VITE_NOCODB_URL}/api/v1/db/data/v1/p8se3q0zbk4ojc4/contact`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'xc-token': import.meta.env.VITE_NOCODB_TOKEN
+        'xc-auth': import.meta.env.VITE_NOCODB_API_TOKEN
       },
       body: JSON.stringify({
-        name: form.value.name,
-        email: form.value.email,
-        message: form.value.message,
-        created_at: new Date().toISOString()
+        Name: form.value.name,
+        Email: form.value.email,
+        Message: form.value.message
       })
     })
 
-    const data = await response.json()
-    console.log('Réponse:', data)
-
     if (!response.ok) {
-      throw new Error(data.msg || 'Erreur lors de l\'envoi')
+      const error = await response.json()
+      throw new Error(error.msg || 'Erreur lors de l\'envoi du message')
     }
 
     form.value = { name: '', email: '', message: '' }
@@ -105,14 +103,14 @@ const sendEmail = async (e: Event) => {
           <button type="submit" 
                   :disabled="isLoading"
                   class="btn-neon w-full">
-            {{ isLoading ? 'Ouverture du client mail...' : 'Envoyer' }}
+            {{ isLoading ? 'Envoi en cours...' : 'Envoyer' }}
           </button>
           
           <p v-if="status === 'success'" class="text-green-600 text-sm">
-            Message envoyé avec succès ! Je vous recontacterai rapidement.
+            Message envoyé avec succès !
           </p>
           <p v-if="status === 'error'" class="text-red-600 text-sm">
-            Une erreur est survenue. Veuillez réessayer ou me contacter directement à contact@kevinalves.fr
+            Une erreur est survenue. Veuillez réessayer.
           </p>
         </form>
       </div>

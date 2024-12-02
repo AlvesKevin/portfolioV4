@@ -1,6 +1,6 @@
-<svg width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="63" height="63" fill="white"/>
-<path d="M15.096 44V17.18H21.54V27.8H21.648L29.244 17.18H36.3L28.2 27.944L37.812 44H30.792L24.456 33.02L21.54 36.98V44H15.096Z" fill="black"/>
-<path d="M26.712 51L35.028 24.18H42.732L51.048 51H44.28L40.932 37.608C40.212 34.944 39.528 31.74 38.808 29.004H38.664C38.016 31.812 37.296 34.944 36.612 37.608L33.264 51H26.712ZM32.364 44.844V39.876H45.324V44.844H32.364Z" fill="black"/>
-<line x1="10.3353" y1="44.4965" x2="30.715" y2="13.8914" stroke="white" stroke-width="4"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <rect width="32" height="32" fill="#1A1A1A"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#FDFBF7" font-family="Space Grotesk" font-size="20" font-weight="bold">
+    K
+  </text>
 </svg>

@@ -7,12 +7,12 @@
         </div>
         
         <div class="flex items-center gap-6">
-          <a href="https://linkedin.com" 
+          <a href="https://www.linkedin.com/in/alvesk%C3%A9vin/" 
              target="_blank"
              class="text-dark-700 hover:text-neon transition-colors">
             LinkedIn
           </a>
-          <a href="https://github.com" 
+          <a href="https://github.com/AlvesKevin" 
              target="_blank"
              class="text-dark-700 hover:text-neon transition-colors">
             GitHub

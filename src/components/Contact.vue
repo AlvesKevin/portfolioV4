@@ -16,16 +16,18 @@ const sendEmail = async (e: Event) => {
   status.value = ''
   
   try {
-    const response = await fetch(`${import.meta.env.VITE_NOCODB_URL}/api/v1/db/data/v1/p8se3q0zbk4ojc4/contact`, {
+    const response = await fetch('https://nocodb.kevinalves.fr/api/v1/db/data/v1/p8se3q0zbk4ojc4/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'xc-auth': import.meta.env.VITE_NOCODB_API_TOKEN
+        'xc-auth': import.meta.env.VITE_NOCODB_API_TOKEN,
+        'Accept': 'application/json'
       },
       body: JSON.stringify({
         Name: form.value.name,
         Email: form.value.email,
-        Message: form.value.message
+        Message: form.value.message,
+        CreatedAt: new Date().toISOString()
       })
     })
 

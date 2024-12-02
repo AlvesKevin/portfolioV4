@@ -14,6 +14,12 @@ RUN npm ci
 # Copie du code source et des fichiers statiques
 COPY . .
 
+# Définition des variables d'environnement pour le build
+ARG VITE_NOCODB_API_TOKEN
+ARG VITE_NOCODB_URL
+ENV VITE_NOCODB_API_TOKEN=${VITE_NOCODB_API_TOKEN}
+ENV VITE_NOCODB_URL=${VITE_NOCODB_URL}
+
 # Build de l'application
 RUN npm run build
 
@@ -31,9 +37,7 @@ COPY --from=build /app/public /usr/share/nginx/html/public
 
 # S'assurer que tous les fichiers sont accessibles par nginx
 RUN chown -R nginx:nginx /usr/share/nginx/html && \
-    chmod -R 755 /usr/share/nginx/html && \
-    # Créer un fichier .htaccess pour la configuration supplémentaire
-    echo "AddType application/javascript .js .mjs .ts" > /usr/share/nginx/html/.htaccess
+    chmod -R 755 /usr/share/nginx/html
 
 EXPOSE 80
 
